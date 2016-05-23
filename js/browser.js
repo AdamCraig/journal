@@ -9,7 +9,7 @@ Entry.prototype.countWords = function() {
   splitBody = this.body.split(" ");
   var wordCount = splitBody.length;
   return wordCount;
-}
+};
 
 //user interface logic
 
