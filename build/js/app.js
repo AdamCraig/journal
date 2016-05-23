@@ -1,1 +1,29 @@
-!function r(t,n,e){function o(i,f){if(!n[i]){if(!t[i]){var a="function"==typeof require&&require;if(!f&&a)return a(i,!0);if(u)return u(i,!0);var c=new Error("Cannot find module '"+i+"'");throw c.code="MODULE_NOT_FOUND",c}var l=n[i]={exports:{}};t[i][0].call(l.exports,function(r){var n=t[i][1][r];return o(n?n:r)},l,l.exports,r,t,n,e)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<e.length;i++)o(e[i]);return o}({1:[function(r,t,n){function e(r,t){this.title=r,this.body=t}e.prototype.countWords=function(){var r=[];r=this.body.split(" ");var t=r.length;return t},$(document).ready(function(){$("#journalEntry").submit(function(r){r.preventDefault();var t=$("#entryTitle").val(),n=$("#body").val(),o=new e(t,n),u=o.countWords();$(".output").append("<li>"+t+"<br>"+n+"<br>"+u+"</li>")})})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+//business logic
+function Entry(title, body) {
+  this.title = title;
+  this.body = body;
+}
+
+Entry.prototype.countWords = function() {
+  var splitBody = [];
+  splitBody = this.body.split(" ");
+  var wordCount = splitBody.length;
+  return wordCount;
+}
+
+//user interface logic
+
+$(document).ready(function(){
+  $('#journalEntry').submit(function(event){
+    event.preventDefault();
+    var entryTitle = $('#entryTitle').val();
+    var body = $('#body').val();
+    var newEntry = new Entry(entryTitle, body);
+    var newWordCount = newEntry.countWords();
+
+    $('.output').append("<li>" + entryTitle + "<br>" + body + "<br>" + newWordCount + "</li>");
+  });
+});
+
+},{}]},{},[1]);
