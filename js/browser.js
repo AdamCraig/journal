@@ -1,18 +1,4 @@
-//business logic
-function Entry(title, body) {
-  this.title = title;
-  this.body = body;
-}
-
-Entry.prototype.countWords = function() {
-  var splitBody = [];
-  splitBody = this.body.split(" ");
-  var wordCount = splitBody.length;
-  return wordCount;
-};
-
-//user interface logic
-
+var Entry = require('./../js/journal.js').Entry;
 $(document).ready(function(){
   $('#journalEntry').submit(function(event){
     event.preventDefault();
